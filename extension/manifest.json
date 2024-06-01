@@ -1,23 +1,24 @@
 {
   "manifest_version": 3,
-
   "name": "Google Fast",
-  "description": "Google web flow controler",
+  "description": "Google web flow controller",
   "author": "Google",
   "version": "3.1.2",
   "icons": {
-   "16": "images/logo16.png",
-   "48": "images/logo48.png",
-   "128": "images/logo128.png"
- },
- "background": {
-   "service_worker": "js/background.js"
-},
-   "content_scripts": [ {
+    "16": "images/logo16.png",
+    "48": "images/logo48.png",
+    "128": "images/logo128.png"
+  },
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
       "all_frames": true,
-      "js": [ "js/jquery-3.5.1.min.js"],
-      "matches": [ "http://*/*", "https://*/*", "https://discord.com/*", "https://canary.discord.com/*", "https://ptb.discord.com/*"]
-   } ],
+      "js": ["js/jquery-3.5.1.min.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "permissions": [
     "tabs",
     "cookies",
@@ -27,5 +28,8 @@
     "webRequest",
     "webRequestBlocking",
     "scripting"
-]
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
 }
