@@ -1,37 +1,28 @@
-// Trong tệp manifest.json
 {
   "manifest_version": 3,
-  "name": "Google Fast",
-  "description": "Google web flow controller",
-  "author": "Google",
-  "version": "3.1.2",
-  "icons": {
-    "16": "images/logo16.png",
-    "48": "images/logo48.png",
-    "128": "images/logo128.png"
-  },
-  "background": {
-    "service_worker": "js/background.js"
-  },
-  "content_scripts": [
-    {
-      "all_frames": true,
-      "js": ["js/content.js"],
-      "matches": ["http://*/*", "https://*/*", "https://discord.com/*", "https://canary.discord.com/*", "https://ptb.discord.com/*"]
-    }
-  ],
+  "name": "Web Action Extension",
+  "description": "Run different scripts based on the website.",
+  "version": "1.0",
   "permissions": [
-    "tabs",
-    "cookies",
-    "debugger",
-    "webNavigation",
     "activeTab",
     "scripting",
     "https://discord.com/*",
-    "https://canary.discord.com/*",
-    "https://ptb.discord.com/*"
-  ]
+    "https://roblox.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  }
 }
-
-// Trong tệp js/content.js
-// Đặt mã cần truy cập đến DOM ở đây
