@@ -1,1 +1,3 @@
 # extension-test
+
+use hawsaki
